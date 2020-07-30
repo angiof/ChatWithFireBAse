@@ -14,5 +14,5 @@ class PagersAdapters (fm:FragmentManager) :FragmentPagerAdapter(fm) {
     override fun getCount()=fragmenlist.size
 
 
-    fun ddFragment (fragment: Fragment)=fragmenlist.add(fragment)
+    fun addFragment (fragment: Fragment)=fragmenlist.add(fragment)
 }

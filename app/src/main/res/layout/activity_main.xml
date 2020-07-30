@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".acitvities.MainActivity">
+    android:orientation="horizontal"
 
+    tools:context=".acitvities.MainActivity">
 
 
     <include
         android:id="@+id/toolbarxml"
         layout="@layout/toolbar"
 
+
         ></include>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonavigation"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/button_navigation_menu"
+        android:background="@drawable/navigation_button_riple"
+        app:itemTextColor="@drawable/botton_navigation_color"
+        app:itemIconTint="@drawable/botton_navigation_color"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:elevation="16dp"
+
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"
+        android:layout_above="@id/buttonavigation"
+        android:layout_below="@id/toolbarxml"
+
+        />
+
+
+</RelativeLayout>
