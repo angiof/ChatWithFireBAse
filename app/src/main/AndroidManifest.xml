@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acitvities.MainEmpatyActivity"
+        <activity android:name=".acitvities.Activities.MainEmpatyActivity"
             android:theme="@android:style/Theme.NoDisplay"
             >
             <intent-filter>
@@ -22,15 +22,15 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".acitvities.SingUpActivity"></activity>
-        <activity android:name=".acitvities.ForgotPaswordActivity" />
+        <activity android:name=".acitvities.Activities.SingUpActivity"></activity>
+        <activity android:name=".acitvities.Activities.ForgotPaswordActivity" />
         <activity
-            android:name=".acitvities.LoginAcitivty"
+            android:name=".acitvities.Activities.LoginAcitivty"
             android:theme="@style/NoPreview"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
-        <activity android:name=".acitvities.MainActivity"></activity>
+        <activity android:name=".acitvities.Activities.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
-package com.example.fianlappfirebase.acitvities
+package com.example.fianlappfirebase.acitvities.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.extencionfuntions.goToActivity
+import com.example.fianlappfirebase.acitvities.Activities.LoginAcitivty
+import com.example.fianlappfirebase.acitvities.Activities.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 

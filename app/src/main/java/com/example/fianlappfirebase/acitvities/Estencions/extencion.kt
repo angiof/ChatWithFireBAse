@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_login_acitivty.view.*
 import kotlinx.android.synthetic.main.activity_sing_up.*
 import java.util.regex.Pattern
 
-//import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso
 
 fun EditText.validate(validation: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -58,9 +58,9 @@ inline fun  < reified T:Activity>Activity.goToActivity(  noinline init: Intent.(
      startActivity(intent)
 }
 
- //fun ImageView.imageviewloaderbyurl(url: String)= Picasso.get().load(url)
+ fun ImageView.imageviewloaderbyurl(url: String)= Picasso.get().load(url)
    // .transform(Trans())
-    //.into(this)
+    .into(this)
 
 fun Activity.isValidEmail(email: String): Boolean {
     val pattern = Patterns.EMAIL_ADDRESS

@@ -1,4 +1,4 @@
-package com.example.fianlappfirebase.acitvities
+package com.example.fianlappfirebase.acitvities.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

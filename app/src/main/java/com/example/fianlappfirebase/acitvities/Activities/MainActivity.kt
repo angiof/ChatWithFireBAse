@@ -1,4 +1,4 @@
-package com.example.fianlappfirebase.acitvities
+package com.example.fianlappfirebase.acitvities.Activities
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -83,10 +83,10 @@ class MainActivity : toolbarActy() {
 
 
                 R.id.button_nav_rates -> {
-                    viewpager.currentItem = 2;true
+                    viewpager.currentItem = 1;true
                 }
                 R.id.button_nav_chat -> {
-                    viewpager.currentItem = 1;true
+                    viewpager.currentItem = 2;true
                 }
                 else -> false
 

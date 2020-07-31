@@ -1,19 +1,12 @@
-package com.example.fianlappfirebase.acitvities
+package com.example.fianlappfirebase.acitvities.Activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Patterns
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import com.example.extencionfuntions.*
 import com.example.fianlappfirebase.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sing_up.*
-import java.util.regex.Pattern
 
 
 private val mAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }

@@ -7,7 +7,7 @@
     android:background="@color/colorPrimaryDark"
     android:fillViewport="true"
     android:focusableInTouchMode="true"
-    tools:context=".acitvities.SingUpActivity">
+    tools:context=".acitvities.Activities.SingUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

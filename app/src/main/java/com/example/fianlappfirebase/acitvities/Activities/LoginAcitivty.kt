@@ -1,30 +1,20 @@
-package com.example.fianlappfirebase.acitvities
+package com.example.fianlappfirebase.acitvities.Activities
 
-import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.extencionfuntions.*
 import com.example.fianlappfirebase.R
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_login_acitivty.*
 import kotlinx.android.synthetic.main.activity_login_acitivty.editTextEmail
 import kotlinx.android.synthetic.main.activity_login_acitivty.editTextPassword
-import kotlinx.android.synthetic.main.activity_sing_up.*
-import java.lang.Error
-import java.lang.Exception
-
-
 
 
 class LoginAcitivty : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
