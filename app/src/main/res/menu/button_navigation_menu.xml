@@ -8,9 +8,9 @@
         android:enabled="true"
         android:icon="@mipmap/ic_info"
         android:title="@string/navigation_bottom_info"
-        app:showAsAction="ifRoom"
+        android:visible="true"
 
-        />
+        app:showAsAction="ifRoom" />
 
 
     <item
@@ -18,9 +18,9 @@
         android:enabled="true"
         android:icon="@mipmap/ic_start"
         android:title="@string/navigation_bottom_rates"
-        app:showAsAction="ifRoom"
+        android:visible="true"
 
-        />
+        app:showAsAction="ifRoom" />
 
 
     <item
@@ -28,9 +28,9 @@
         android:enabled="true"
         android:icon="@mipmap/ic_chat"
         android:title="@string/navigation_bottom_chat"
-        app:showAsAction="ifRoom"
+        android:visible="true"
 
-        />
+        app:showAsAction="ifRoom" />
 
 
 

@@ -51,32 +51,37 @@ class ChatAdapters(val items: List<Messages_Model>, val userId: String) :
     }
 
     class ViewHolderR(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(messagesModel: Messages_Model) = with(itemView) {
-            textViewMessageRight.text = messagesModel.message
-            textViewTimeRight.text = SimpleDateFormat("hh:mm").format(messagesModel.sentAt)
+        fun bind(message: Messages_Model) = with(itemView) {
+            textViewMessageRight.text = message.message
+            textViewTimeRight.text = SimpleDateFormat("hh:mm").format(message.sentAt)
+            if(message.profileImageURL.isEmpty()) {
+                Picasso.get().load(R.drawable.ic_person).resize(100, 100)
+                    .centerCrop().transform(CircleTrans()).into(imageViewProfileRight)
 
-            //picasso load image here
-            Picasso.get().load(messagesModel.profileImageURL).resize(100,100)
-                .centerCrop()
-                .transform(CircleTrans())
-                .into(imageViewProfileRight)
 
+            } else {
+                Picasso.get().load(message.profileImageURL).resize(100, 100)
+                    .centerCrop().transform(CircleTrans()).into(imageViewProfileRight)
+            }
         }
     }
 
-    class ViewHolderL(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(messagesModel: Messages_Model) = with(itemView) {
-            textViewMessageLeft.text = messagesModel.message
-            textViewTimeLeft.text = SimpleDateFormat("hh:mm").format(messagesModel.sentAt)
+class ViewHolderL(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun bind(message: Messages_Model) = with(itemView) {
+        textViewMessageLeft.text = message.message
+        textViewTimeLeft.text = SimpleDateFormat("hh:mm").format(message.sentAt)
+        if(message.profileImageURL.isEmpty()) {
+            Picasso.get().load(R.drawable.ic_person).resize(100, 100)
+                .centerCrop().transform(CircleTrans()).into(imageViewProfileLeft)
 
-            //picasso load image here
-            Picasso.get().load(messagesModel.profileImageURL).resize(100,100)
-                .centerCrop()
-                .transform(CircleTrans())
 
-                .into(imageViewProfileLeft )
+
+        } else {
+            Picasso.get().load(message.profileImageURL).resize(100, 100)
+                .centerCrop().transform(CircleTrans()).into(imageViewProfileLeft)
         }
     }
-
-
 }
+    }
+
+

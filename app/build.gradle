@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.fianlappfirebase"
-        minSdkVersion 29
+        minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.3.1'
 
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
 
     implementation 'com.squareup.picasso:picasso:2.71828'

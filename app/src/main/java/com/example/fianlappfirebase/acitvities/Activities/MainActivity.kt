@@ -44,6 +44,7 @@ class MainActivity : toolbarActy() {
 
     private fun setUpViewPager(adapters: PagersAdapters) {
         viewpager.adapter = adapters
+        viewpager.offscreenPageLimit=adapters.count
         viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
