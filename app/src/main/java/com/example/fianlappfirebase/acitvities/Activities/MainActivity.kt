@@ -1,11 +1,12 @@
 package com.example.fianlappfirebase.acitvities.Activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.get
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.extencionfuntions.goToActivity
 import com.example.fianlappfirebase.R
 import com.example.fianlappfirebase.acitvities.Fragemnts.ChatFragment
 import com.example.fianlappfirebase.acitvities.Fragemnts.InfoFragment
@@ -44,7 +45,7 @@ class MainActivity : toolbarActy() {
 
     private fun setUpViewPager(adapters: PagersAdapters) {
         viewpager.adapter = adapters
-        viewpager.offscreenPageLimit=adapters.count
+        viewpager.offscreenPageLimit = adapters.count
         viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
@@ -94,5 +95,32 @@ class MainActivity : toolbarActy() {
             }
         }
 
+
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_geral_exit, menu)
+        return super.onCreateOptionsMenu(menu)
+
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.menu_log_aut->{
+                FirebaseAuth.getInstance().signOut()
+                goToActivity<LoginAcitivty>(){
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                }
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }
+
+

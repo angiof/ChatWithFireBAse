@@ -9,12 +9,11 @@ object RxBus {
     private val publisher = PublishSubject.create<Any>()
 
 
-    fun publish(event: Any){
+    fun publish(event: Any) {
         publisher.onNext(event)
     }
 
-    fun <T>listen (evntType : Class<T>): io.reactivex.Observable<T> = publisher.ofType(evntType)
-
+    fun <T> listen(evntType: Class<T>): io.reactivex.Observable<T> = publisher.ofType(evntType)
 
 
 }

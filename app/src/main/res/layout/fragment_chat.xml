@@ -52,6 +52,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageButtonchatsend" />
 
         <ImageButton
+            android:longClickable="true"
             android:id="@+id/imageButtonchatsend"
             android:layout_width="49dp"
             android:layout_height="50dp"

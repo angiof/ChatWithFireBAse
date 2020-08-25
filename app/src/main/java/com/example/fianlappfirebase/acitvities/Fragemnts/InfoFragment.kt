@@ -42,7 +42,7 @@ class InfoFragment : Fragment() {
 
         setUpChatDb()
 
-        subscribeTotalMessagesFirebaseStyle()
+       // subscribeTotalMessagesFirebaseStyle()
         totalMessagesEventBusReactiveStyle()
 
         return _view

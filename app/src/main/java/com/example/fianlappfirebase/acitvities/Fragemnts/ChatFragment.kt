@@ -1,16 +1,16 @@
 package com.example.fianlappfirebase.acitvities.Fragemnts
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.extencionfuntions.toastt
 import com.example.fianlappfirebase.R
 import com.example.fianlappfirebase.acitvities.Models.Messages_Model
+import com.example.fianlappfirebase.acitvities.Models.RxBus
+import com.example.fianlappfirebase.acitvities.Models.TotalMessagesEvent
 import com.example.fianlappfirebase.acitvities.adapters.ChatAdapters
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -33,7 +33,7 @@ class ChatFragment : Fragment() {
     private lateinit var currentUser: FirebaseUser
     private lateinit var chatDbRef: CollectionReference
     private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private  val chatsubcription: ListenerRegistration?=null
+    private val chatsubcription: ListenerRegistration? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +50,9 @@ class ChatFragment : Fragment() {
         setUpChatbtn()
         subscribeCHatMessenger()
 
+        registerForContextMenu(_view.recyclreview)
+
+
         return _view
 
 
@@ -62,6 +65,8 @@ class ChatFragment : Fragment() {
 
     private fun setUpChatDb() {
         chatDbRef = store.collection("chat")
+        //chatDbRef = store.collection("chat0")
+
 
     }
 
@@ -70,9 +75,11 @@ class ChatFragment : Fragment() {
 
             val messageText = _view.editTextmessage.text.toString()
             if (messageText.isNotEmpty()) {
-                val photo=currentUser.photoUrl?.let { currentUser.photoUrl.toString() } ?: run {""}
+                val photo =
+                    currentUser.photoUrl?.let { currentUser.photoUrl.toString() } ?: run { "" }
                 val message = Messages_Model(
-                    currentUser.uid, messageText, photo,Date())
+                    currentUser.uid, messageText, photo, Date()
+                )
 
                 //salvato in firebase
                 saveMessage(message)
@@ -116,36 +123,43 @@ class ChatFragment : Fragment() {
     private fun subscribeCHatMessenger() {
 
         chatDbRef
-            .orderBy("sentAt",Query.Direction.DESCENDING)
+            .orderBy("sentAt", Query.Direction.DESCENDING)
             .limit(20)
 
-            .addSnapshotListener(object : EventListener, com.google.firebase.firestore.EventListener<QuerySnapshot> {
-            
-            override fun onEvent(snapshot:  QuerySnapshot?, exeption: FirebaseFirestoreException?) {
+            .addSnapshotListener(object : EventListener,
+                com.google.firebase.firestore.EventListener<QuerySnapshot> {
 
-                exeption?.let {
-                    activity?.toastt("exeption")
-                    return
+                override fun onEvent(
+                    snapshot: QuerySnapshot?,
+                    exeption: FirebaseFirestoreException?
+                ) {
+
+                    exeption?.let {
+                        activity?.toastt("exeption")
+                        return
+                    }
+                    snapshot?.let {
+                        messageList.clear()
+                        val message = it.toObjects(Messages_Model::class.java)
+                        messageList.addAll(message.asReversed())
+                        adapter.notifyDataSetChanged()
+                        _view.recyclreview.smoothScrollToPosition(messageList.size)
+                        RxBus.publish(TotalMessagesEvent(messageList.size))
+                    }
+
                 }
-                snapshot?.let {
-                    messageList.clear()
-                    val message=it.toObjects(Messages_Model::class.java)
-                    messageList.addAll(message.asReversed())
-                    adapter.notifyDataSetChanged()
-                    _view.recyclreview.smoothScrollToPosition(messageList.size)
-                }
-
-            }
 
 
-        })
+            })
 
 
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         chatsubcription?.remove()
+
 
     }
 
